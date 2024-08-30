@@ -15,7 +15,7 @@ function RouteManager() {
         <Routes>
             <Route exact path="/" element={<Homepage/>}/>
             <Route exact path="/companies" element={<CompanyList/>}/>
-            <Route exact path="/companies/:company" element={<CompanyDetail/>}/>
+            <Route exact path="/companies/:handle" element={<CompanyDetail/>}/>
             <Route exact path="/jobs" element={<JobsList/>}/>
             <Route exact path="/login" element={<LoginForm/>}/>
             <Route exact path="/signup" element={<SignupForm/>}/>
