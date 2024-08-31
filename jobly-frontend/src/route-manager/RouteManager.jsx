@@ -9,7 +9,7 @@ import LoginForm from "../forms/LoginForm";
 import SignupForm from "../forms/SignupForm";
 import EditProfileForm from "../forms/EditProfileForm";
 
-function RouteManager() {
+function RouteManager({ login, signup }) {
 
     return (
         <Routes>
@@ -17,8 +17,8 @@ function RouteManager() {
             <Route exact path="/companies" element={<CompanyList/>}/>
             <Route exact path="/companies/:handle" element={<CompanyDetail/>}/>
             <Route exact path="/jobs" element={<JobsList/>}/>
-            <Route exact path="/login" element={<LoginForm/>}/>
-            <Route exact path="/signup" element={<SignupForm/>}/>
+            <Route exact path="/login" element={<LoginForm login={login}/>}/>
+            <Route exact path="/signup" element={<SignupForm signup={signup}/>}/>
             <Route exact path="/profile" element={<EditProfileForm/>}/>
         </Routes>
     )
