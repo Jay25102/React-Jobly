@@ -6,13 +6,25 @@ import Navbar from "./navbar/Navbar";
 import useLocalStorage from "./hooks/useLocalStorage";
 import UserContext from "./forms/UserContext";
 import { decodeToken } from "react-jwt";
+import LoadingSpinner from "./LoadingSpinner";
 
+// token for localstorage
 export const TOKEN_STORAGE_ID = "jobly-token";
 
+/**
+ * Contains navbar and routes as well as a context that
+ * passes down user and job application status down to the
+ * rest of the components.
+ * 
+ */
 function App() {
+  // user state to keep track of what user is logged in if at all
   const [currentUser, setCurrentUser] = useState(null);
+  // used to keep track of whether or not the page is fully loaded
   const [infoLoaded, setInfoLoaded] = useState(false);
+  // what applications the user has already applied for
   const [applicationIds, setApplicationIds] = useState(new Set([]));
+  // token for logged in users. Read from localstorage and used for auth
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
 
   console.debug(
@@ -22,6 +34,10 @@ function App() {
     "token=", token,
   )
 
+  /**
+   * fetches user info from the api only after there is one logged in with
+   * a token. Runs again when the token is changed
+   */
   useEffect(function loadUserInfo() {
     async function getCurrentUser() {
       if (token) {
@@ -42,11 +58,17 @@ function App() {
     getCurrentUser();
   }, [token]);
     
+  // logs user out by removing currentUser and their token
   function logout() {
     setCurrentUser(null);
     setToken(null);
   }
 
+  /**
+   * Makes a call to the api to sign up a user with credentials
+   * in signupData. Sets their token afterwards which effectively
+   * logs them in. This is passed down to the signup form component.
+   */
   async function signup(signupData) {
     try {
       let token = await JoblyApi.signup(signupData);
@@ -58,6 +80,9 @@ function App() {
     }
   }
 
+  /**
+   * Similar to signup and is passed down to the login form comp.
+   */
   async function login(loginData) {
     try {
       let token = await JoblyApi.login(loginData);
@@ -69,17 +94,19 @@ function App() {
     }
   }
 
+  // check if job has already been applied to
   function hasAppliedToJob(id) {
     return applicationIds.has(id);
   }
 
+  // Apply to a job and update the list of applied jobs
   function applyToJob(id) {
     if (hasAppliedToJob(id)) return;
     JoblyApi.applyToJob(currentUser.username, id);
     setApplicationIds(new Set([...applicationIds, id]));
   }
 
-  if (!infoLoaded) return <div>loading...</div>
+  if (!infoLoaded) return <LoadingSpinner/>
 
   return (
     <BrowserRouter>
