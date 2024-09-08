@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { redirect } from "react-router-dom";
 import Alert from "../Alert";
 
-function SignupForm({singup}) {
+function SignupForm({signup}) {
     const initialState = {
         username: "",
         password: "",
@@ -15,14 +15,14 @@ function SignupForm({singup}) {
 
     console.debug(
         "SignupForm",
-        "signup=", typeof singup,
+        "signup=", typeof signup,
         "formData=", formData,
         "formErrors=", formErrors,
     )
 
     async function handleSubmit(e) {
         e.preventDefault();
-        let result = await singup(formData);
+        let result = await signup(formData);
         if (result.success) {
             return redirect("/companies");
         }
