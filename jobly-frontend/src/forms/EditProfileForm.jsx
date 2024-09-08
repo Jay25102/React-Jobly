@@ -3,6 +3,14 @@ import Alert from "../Alert";
 import JoblyApi from "../../api";
 import UserContext from "./UserContext";
 
+
+/**
+ * Form for editing user profile.
+ * 
+ * Displays a form with values autofilled to current user data.
+ * Once the form submits, the API is called to patch in the new
+ * user information from the form. This also reloads the site
+ */
 function EditProfileForm() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [formData, setFormData] = useState({
@@ -22,6 +30,11 @@ function EditProfileForm() {
         "saveConfirmed", saveConfirmed,
     )
 
+    /**
+     * Uses api to try to patch data to backend.
+     * Reports any errors and if successful, sets new info
+     * across the site.
+     */
     async function handleSubmit(e) {
         e.preventDefault();
 
@@ -45,6 +58,7 @@ function EditProfileForm() {
         setFormData(data => ({ ...data, password: ""}));
         setFormErrors([]);
         setSaveConfirmed(true);
+        // triggers user info to reload
         setCurrentUser(updatedUser);
     }
 

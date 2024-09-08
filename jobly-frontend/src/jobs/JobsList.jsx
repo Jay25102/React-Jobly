@@ -3,6 +3,10 @@ import SearchForm from "../forms/SearchForm";
 import JoblyApi from "../../api";
 import JobCardList from "./JobCardList";
 
+/**
+ * Returns a list of jobs from the API. Uses the searchForm component
+ * to filter jobs by name. Passes the list of jobs to JobCardList.
+ */
 function JobsList() {
     const [jobs, setJobs] = useState(null);
     console.debug("JobList");

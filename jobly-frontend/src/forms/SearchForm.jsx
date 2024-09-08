@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+/**
+ * Search component used in CompanyList and JobList components.
+ * When submitted, the component calls the searchFor prop which
+ * is a function defined by the components that render it.
+ */
 function SearchForm({searchFor}) {
     const [searchTerm, setSearchterm] = useState("");
     console.debug("SearchForm", "searchFor=", typeof searchFor);

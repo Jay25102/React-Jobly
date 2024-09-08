@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import UserContext from "../forms/UserContext";
 
+/**
+ * Site-wide navbar. Shows different options when logged in/out.
+ * Logs user out using the logout function defined in App
+ */
 function Navbar({ logout }) {
     const { currentUser } = useContext(UserContext);
     console.debug("Navigation", "currentUser=", currentUser);

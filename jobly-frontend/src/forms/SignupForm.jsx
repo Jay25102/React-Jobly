@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import { redirect } from "react-router-dom";
 import Alert from "../Alert";
 
+/**
+ * Form to register a new user.
+ * 
+ * When submitted, calls signup function prop defined in App
+ * then redirects to /companies
+ */
 function SignupForm({signup}) {
     const initialState = {
         username: "",

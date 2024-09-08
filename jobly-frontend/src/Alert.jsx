@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * Component to display alerts in forms
+ */
 function Alert({type = "danger", messages = []}) {
     console.debug("Alert", "type=", type, "messages=", messages);
 

@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import JoblyApi from "../../api";
 import JobCardList from "../jobs/JobCardList";
 
+/**
+ * Displays info about company along with the jobs of that company.
+ */
 function CompanyDetail() {
     const { handle } = useParams();
     console.debug("CompanyDetail");

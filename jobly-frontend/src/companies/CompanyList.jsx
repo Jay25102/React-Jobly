@@ -3,6 +3,13 @@ import JoblyApi from "../../api";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "../forms/SearchForm";
 
+
+/**
+ * Fetches list of companies from the API on load.
+ * 
+ * Renders a company card to display company info for each
+ * company.
+ */
 function CompanyList() {
     const [companies, setCompanies] = useState(null);
     console.debug("CompanyList");

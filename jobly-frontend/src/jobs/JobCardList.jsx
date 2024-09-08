@@ -1,6 +1,9 @@
 import React from "react";
 import JobCard from "./JobCard";
 
+/**
+ * renders JobCard components for each job passed into the function.
+ */
 function JobCardList({jobs}) {
     console.debug("JobCardList", "jobs=", jobs);
 
