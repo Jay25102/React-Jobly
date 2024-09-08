@@ -62,11 +62,21 @@ function App() {
     }
   }
 
+  function hasAppliedToJob(id) {
+    return applicationIds.has(id);
+  }
+
+  function applyToJob(id) {
+    if (hasAppliedToJob(id)) return;
+    JoblyApi.applyToJob(currentUser.username, id);
+    setApplicationIds(new Set([...applicationIds, id]));
+  }
+
   if (!infoLoaded) return <div>loading...</div>
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{currentUser, setCurrentUser}}>
+      <UserContext.Provider value={{currentUser, setCurrentUser, hasAppliedToJob, applyToJob}}>
         <Navbar logout={logout}/>
         <RouteManager login={login} signup={signup}/>
       </UserContext.Provider>

@@ -18,7 +18,7 @@ function SearchForm({searchFor}) {
             <form onSubmit={handleSubmit}>
                 <input 
                     name="searchTerm"
-                    placeholder="Enter company name"
+                    placeholder="Enter term..."
                     value={searchTerm}
                     onChange={handleChange}
                 />
