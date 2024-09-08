@@ -4,8 +4,10 @@ import UserContext from "../forms/UserContext";
 function JobCard({id, title, salary, equity, companyName}) {
     const { hasAppliedToJob, applyToJob } = useContext(UserContext);
     const [applied, setApplied] = useState();
+    console.debug("JobCard");
 
     useEffect(function updateAppliedStatus() {
+        console.debug("JobCard useEffect updateAppliedStatus", "id=", id);
         setApplied(hasAppliedToJob(id));
     }, [id, hasAppliedToJob]);
 

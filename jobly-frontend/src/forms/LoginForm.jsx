@@ -9,6 +9,7 @@ function LoginForm({ login }) {
     }
     const [formData, setFormData] = useState(initialState);
     const [formErrors, setFormErrors] = useState([]);
+    console.debug("LoginForm", "login=", typeof login);
 
     async function handleSubmit(e) {
         e.preventDefault();

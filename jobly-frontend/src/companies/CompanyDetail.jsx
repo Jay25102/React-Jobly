@@ -5,10 +5,12 @@ import JobCardList from "../jobs/JobCardList";
 
 function CompanyDetail() {
     const { handle } = useParams();
+    console.debug("CompanyDetail");
 
     const [company, setCompany] = useState(null);
 
     useEffect(function fetchCompanyOnMount() {
+        console.debug("CompanyDetail useEffect fetchCompanyOnMount");
         async function fetchCompany() {
             setCompany(await JoblyApi.getCompany(handle));
         }

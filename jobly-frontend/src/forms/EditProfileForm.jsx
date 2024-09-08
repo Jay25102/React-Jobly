@@ -14,6 +14,13 @@ function EditProfileForm() {
     });
     const [formErrors, setFormErrors] = useState([]);
     const [saveConfirmed, setSaveConfirmed] = useState(false);
+    console.debug(
+        "EditProfileForm",
+        "currentuser=", currentUser,
+        "formData=", formData,
+        "formErrors=", formErrors,
+        "saveConfirmed", saveConfirmed,
+    )
 
     async function handleSubmit(e) {
         e.preventDefault();

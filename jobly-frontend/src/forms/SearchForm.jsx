@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function SearchForm({searchFor}) {
     const [searchTerm, setSearchterm] = useState("");
+    console.debug("SearchForm", "searchFor=", typeof searchFor);
 
     function handleSubmit(e) {
         e.preventDefault();

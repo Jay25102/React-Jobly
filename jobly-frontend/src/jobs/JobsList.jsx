@@ -4,10 +4,11 @@ import JoblyApi from "../../api";
 import JobCardList from "./JobCardList";
 
 function JobsList() {
-
     const [jobs, setJobs] = useState(null);
+    console.debug("JobList");
 
     useEffect(function fetchAllJobsOnMount() {
+        console.debug("JobList useEffect fetchAllJobsOnMount");
         search();
     }, []);
     

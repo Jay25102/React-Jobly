@@ -5,8 +5,10 @@ import SearchForm from "../forms/SearchForm";
 
 function CompanyList() {
     const [companies, setCompanies] = useState(null);
+    console.debug("CompanyList");
 
     useEffect(function fetchCompaniesOnMount() {
+        console.debug("CompanyList useEffect fetchCompaniesOnMount");
         search();
     }, []);
 

@@ -10,6 +10,7 @@ import SignupForm from "../forms/SignupForm";
 import EditProfileForm from "../forms/EditProfileForm";
 
 function RouteManager({ login, signup }) {
+    console.debug("Routes", "login=", typeof login, "signup=", typeof signup);
 
     return (
         <Routes>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function CompanyCard({name, handle, description, logoUrl}) {
+    console.debug("CompanyCard", logoUrl);
 
     return (
         <Link to={`/companies/${handle}`}>
