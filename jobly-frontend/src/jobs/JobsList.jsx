@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchForm from "../forms/SearchForm";
 import JoblyApi from "../../api";
 import JobCardList from "./JobCardList";
+import LoadingSpinner from "../LoadingSpinner";
 
 /**
  * Returns a list of jobs from the API. Uses the searchForm component
@@ -21,14 +22,14 @@ function JobsList() {
         setJobs(jobs);
     }
 
-    if (!jobs) return <div>loading...</div>
+    if (!jobs) return <LoadingSpinner/>;
 
     return (
-        <div>
+        <div className="JobList col-md-8 offset-md-2">
             <SearchForm searchFor={search}/>
             {jobs.length 
                 ? <JobCardList jobs={jobs}/>
-                : <p>Sorry, no results were found!</p>
+                : <p className="lead">Sorry, no results were found!</p>
             }
         </div>
     )

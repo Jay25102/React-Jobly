@@ -8,7 +8,7 @@ function JobCardList({jobs}) {
     console.debug("JobCardList", "jobs=", jobs);
 
     return (
-        <div>
+        <div className="JobCardList">
             {jobs.map(job => (
                 <JobCard 
                     key={job.id}

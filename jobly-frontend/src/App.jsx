@@ -7,6 +7,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import UserContext from "./forms/UserContext";
 import { decodeToken } from "react-jwt";
 import LoadingSpinner from "./LoadingSpinner";
+import "bootstrap/dist/css/bootstrap.css";
 
 // token for localstorage
 export const TOKEN_STORAGE_ID = "jobly-token";

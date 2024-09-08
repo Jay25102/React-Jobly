@@ -27,37 +27,47 @@ function LoginForm({ login }) {
     }
 
     return (
-        <div>
-            <div>Login</div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Username</label>
-                    <input 
-                        name="username"
-                        value={formData.username}
-                        onChange={handleChange}
-                        autoComplete="username"
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input 
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        autoComplete="current-password"
-                        required
-                    />
-                </div>
+        <div className="LoginForm container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <h3 className="mb-3">Login</h3>
+            <div className="card">
+                <div className="card-body">
+                    <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input 
+                            name="username"
+                            className="form-control"
+                            value={formData.username}
+                            onChange={handleChange}
+                            autoComplete="username"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input 
+                            type="password"
+                            name="password"
+                            className="form-control"
+                            value={formData.password}
+                            onChange={handleChange}
+                            autoComplete="current-password"
+                            required
+                        />
+                    </div>
 
-                {formErrors.length
-                    ? <Alert messages={formErrors}/>
-                    : null}
+                    {formErrors.length
+                        ? <Alert messages={formErrors}/>
+                        : null}
 
-                <button onSubmit={handleSubmit}>Submit</button>
-            </form>
+                    <button 
+                        className="btn btn-primary float-right"
+                        onSubmit={handleSubmit}
+                    >Submit</button>
+                </form>
+                </div>
+            </div>
+            
         </div>
     )
 }

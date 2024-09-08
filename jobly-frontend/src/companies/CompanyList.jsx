@@ -27,7 +27,7 @@ function CompanyList() {
     if (!companies) return <div>loading...</div>
 
     return (
-        <div>
+        <div className="CompanyList col-md-8 offset-md-2">
             <SearchForm searchFor={search}/>
             {companies.map(c => (
                 <CompanyCard 

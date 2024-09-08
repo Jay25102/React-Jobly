@@ -13,10 +13,20 @@ function Navbar({ logout }) {
     function loggedInNav() {
         return (
             <div>
-                <NavLink to="/companies">Companies</NavLink>
-                <NavLink to="/jobs">Jobs</NavLink>
-                <NavLink to="/profile">Profile</NavLink>
-                <NavLink to="/" onClick={logout}>Log out {currentUser.first_name || currentUser.username}</NavLink>
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item mr-4">
+                        <NavLink className="nav-link" to="/companies">Companies</NavLink>
+                    </li>
+                    <li className="nav-item mr-4">
+                        <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+                    </li>
+                    <li className="nav-item mr-4">
+                        <NavLink className="nav-link" to="/profile">Profile</NavLink>
+                    </li>
+                    <li className="nav-item mr-4">
+                        <NavLink className="nav-link" to="/" onClick={logout}>Log out ({currentUser.first_name || currentUser.username})</NavLink>
+                    </li>
+                </ul>
             </div>
         )
     }
@@ -24,17 +34,23 @@ function Navbar({ logout }) {
     function loggedOutNav() {
         return (
             <div>
-                <NavLink to="/login">Login</NavLink>
-                <NavLink to="/signup">Signup</NavLink>
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item mr-4">
+                        <NavLink className="nav-link" to="/login">Login</NavLink>
+                    </li>
+                    <li className="nav-item mr-4">
+                        <NavLink className="nav-link" to="/signup">Signup</NavLink>
+                    </li>
+                </ul>
             </div>
         )
     }
 
     return (
-        <div>
-            <NavLink to="/">Homepage</NavLink>
+        <nav className="Navbar navbar navbar-expand-md">
+            <NavLink className="navbar-brand" to="/">Homepage</NavLink>
             {currentUser ? loggedInNav() : loggedOutNav()}
-        </div>
+        </nav>
     )
 }
 

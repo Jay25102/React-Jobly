@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import UserContext from "../forms/UserContext";
+import "./JobCard.css";
 
 /**
  * Display info about each job. Rendered from JobCardList.
@@ -35,16 +36,18 @@ function JobCard({id, title, salary, equity, companyName}) {
     }
 
     return (
-        <div>
-            <div>Applied: {applied}</div>
-            <div>Title: {title}</div>
-            <div>Company: {companyName}</div>
-            {salary && <div>Salary: {formatSalary(salary)}</div>}
-            {equity !== undefined && <div>Equity: {equity}</div>}
-            <button
-                onClick={handleApply}
-                disabled={applied}
-            >{applied ? "Applied" : "Apply"}</button>
+        <div className="JobCard card">
+            <div className="card-body">
+                <div className="card-title">Title: {title}</div>
+                <p>{companyName}</p>
+                {salary && <div><small>Salary: {formatSalary(salary)}</small></div>}
+                {equity !== undefined && <div><small>Equity: {equity}</small></div>}
+                <button
+                    className="btn btn-danger font-weight-bold text-uppercase float-right"
+                    onClick={handleApply}
+                    disabled={applied}
+                >{applied ? "Applied" : "Apply"}</button>
+            </div>
         </div>
     )
 }
