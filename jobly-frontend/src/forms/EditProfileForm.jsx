@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import Alert from "../Alert";
 import JoblyApi from "../../api";
 import UserContext from "./UserContext";
 
@@ -86,8 +87,15 @@ function EditProfileForm() {
                         onChange={handleChange}
                     />
                 </div>
+
+                {formErrors.length
+                    ? <Alert messages={formErrors}/>
+                    : null}
+                {saveConfirmed
+                    ? <Alert type="success" messages={["updated successfully."]}/>
+                    : null}
+
                 <button onClick={handleSubmit}>Save Changes</button>
-                
             </form>
         </div>
     )

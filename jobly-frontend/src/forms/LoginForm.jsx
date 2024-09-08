@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { redirect } from "react-router-dom";
+import Alert from "../Alert";
 
 function LoginForm({ login }) {
     const initialState = {
@@ -49,9 +50,11 @@ function LoginForm({ login }) {
                         required
                     />
                 </div>
-                {formErrors.map(err => (
-                    <p>{err}</p>
-                ))}
+
+                {formErrors.length
+                    ? <Alert messages={formErrors}/>
+                    : null}
+
                 <button onSubmit={handleSubmit}>Submit</button>
             </form>
         </div>
